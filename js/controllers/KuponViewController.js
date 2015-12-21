@@ -1,11 +1,11 @@
-angular.module('MetronicApp').controller('KuponViewController', function( $scope, $rootScope, $http) {
+angular.module('MetronicApp').controller('KuponViewController', function( $scope, $rootScope, $http, kuponDynamConst) {
  
 
 	$scope.getAllDeals  = function () {
 		
 		console.log("$scope.deal :" +$scope.deal);
 		$http({
-    	    url: 'http://localhost:3000/allKuponDeal',
+    	    url: kuponDynamConst.url + '/allKuponDeal',
     	    method	: 'GET',
     	    headers	: { 'Access-Control-Request-Headers': 'accept, content-type','Access-Control-Request-Method': 'POST,PUT,DELETE'},
             dataType: 'json'
@@ -29,7 +29,7 @@ angular.module('MetronicApp').controller('KuponViewController', function( $scope
 	$scope.deleteDeal  = function (id) {
 		
 		$http({
-    	    url: 'http://localhost:3000/deleteKuponDeal/' + id,
+    	    url: kuponDynamConst.url + '/deleteKuponDeal/' + id,
     	    method	: 'DELETE',
     	    headers	: { 'Access-Control-Request-Headers': 'accept, content-type','Access-Control-Request-Method': 'POST,PUT,DELETE'},
             dataType: 'json'
@@ -38,10 +38,7 @@ angular.module('MetronicApp').controller('KuponViewController', function( $scope
 				if (!angular.isUndefined(response.data.error)) {
 					alert("create kupon deal error :" + response.data.error);
 				} else {
-					console.log(JSON.stringify(response));
-					
 					$scope.alert = {'message' : response.data.success , 'enable' : true , 'type':'alert alert-success'};
-					
 					$scope.getAllDeals();
 				}
 			} else {

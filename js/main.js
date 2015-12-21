@@ -11,6 +11,11 @@ var MetronicApp = angular.module("MetronicApp", [
     "ngSanitize"
 ]); 
 
+MetronicApp.value("kuponDynamConst", {
+	url	:	'http://localhost:3000',
+	volUserIdentity:''
+});
+
 /* Configure ocLazyLoader(refer: https://github.com/ocombe/ocLazyLoad) */
 MetronicApp.config(['$ocLazyLoadProvider', function($ocLazyLoadProvider) {
     $ocLazyLoadProvider.config({

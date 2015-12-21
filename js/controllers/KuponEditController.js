@@ -1,4 +1,4 @@
-angular.module('MetronicApp').controller('KuponEditController', [ '$scope', '$stateParams', '$rootScope', '$http', function( $scope, $stateParams, $rootScope, $http) {
+angular.module('MetronicApp').controller('KuponEditController', [ '$scope', '$stateParams', '$rootScope', '$http', 'kuponDynamConst', function( $scope, $stateParams, $rootScope, $http, kuponDynamConst) {
  
 
 	
@@ -6,7 +6,7 @@ angular.module('MetronicApp').controller('KuponEditController', [ '$scope', '$st
 	$scope.getKuponDealById = function () {
 		
 		$http({
-    	    url: 'http://localhost:3000/kuponDeal/'+$scope.id,
+    	    url: kuponDynamConst.url + '/kuponDeal/'+$scope.id,
     	    method	: 'GET',
     	    headers	: { 'Access-Control-Request-Headers': 'accept, content-type','Access-Control-Request-Method': 'POST,PUT,DELETE'},
             dataType: 'json'
@@ -31,7 +31,7 @@ angular.module('MetronicApp').controller('KuponEditController', [ '$scope', '$st
 		delete $scope.deal._id ;
 		console.log("$scope.deal : " + JSON.stringify($scope.deal));
 		$http({
-    	    url: 'http://localhost:3000/updateKuponDeal/'+$scope.id,
+    	    url: kuponDynamConst.url +'/updateKuponDeal/'+$scope.id,
     	    method	: 'PUT',
     	    headers	: { 'Access-Control-Request-Headers': 'accept, content-type','Access-Control-Request-Method': 'POST,PUT,DELETE'},
             dataType: 'json',

@@ -58,6 +58,7 @@
 	 <div class="form-group">
 			<label  for="inputEmail" class="control-label col-md-3">deal type :</label>
 				<div class="col-md-9">
+				
 					 <select class="form-control input-xlarge select2me" data-placeholder="Select..." ng-model="deal.type">
                                     <option value=""></option>
                                     <option value="featureDeal">Featured Deals</option>
@@ -72,11 +73,11 @@
 	<div class="form-group">
 			<label  for="inputEmail" class="control-label col-md-3">do u want to publish now :</label>
 				<div class="col-md-9">
-					
+					deal.isPublish : {{deal.isPublish}}
 					 <select class="form-control input-xlarge select2me" data-placeholder="Select..." ng-model="deal.isPublish">
                                     <option value=""></option>
-                                    <option value="yes">Yes</option>
-                                    <option value="no">No</option>
+                                    <option value="yes" selected="true">Yes</option>
+                                    <option value="no" >No</option>
 									
                      </select>
 				</div>
@@ -178,7 +179,7 @@
 	
 	</form>
 	<br><br><br>
-	<pre>{{deal}}</pre></div>
+	
 <div class="col-md-1"></div>
 
 </div>

@@ -1,11 +1,11 @@
-angular.module('MetronicApp').controller('KuponRegController', function( $scope, $rootScope, $http) {
+angular.module('MetronicApp').controller('KuponRegController', function( $scope, $rootScope, $http, kuponDynamConst) {
  
 
 	$scope.createNewDeal  = function () {
 		
 		console.log("$scope.deal :" +$scope.deal);
 		$http({
-    	    url: 'http://localhost:3000/saveKuponDeals',
+    	    url: kuponDynamConst.url + '/saveKuponDeals',
     	    method	: 'POST',
     	    headers	: { 'Access-Control-Request-Headers': 'accept, content-type','Access-Control-Request-Method': 'POST,PUT,DELETE'},
             dataType: 'json',
@@ -15,7 +15,6 @@ angular.module('MetronicApp').controller('KuponRegController', function( $scope,
 				if (!angular.isUndefined(response.data.error)) {
 					alert("create kupon deal error :" + response.data.error);
 				} else {
-					alert(response.success);
 					$scope.alert = {'message' : response.data.success , 'enable' : true , 'type':'alert alert-success'};
 					$scope.deal = {};
 				}
