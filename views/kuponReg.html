@@ -1,0 +1,195 @@
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="#/dashboard.html">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a href="#">Kupon</a>
+        </li>
+    </ul>
+    <div class="page-toolbar">
+        <div class="btn-group pull-right">
+            <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" dropdown-menu-hover data-delay="1000" data-close-others="true"> Actions
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <ul class="dropdown-menu pull-right" role="menu">
+                <li>
+                    <a href="#">
+                        <i class="icon-user"></i> New User </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="icon-present"></i> New Event
+                        <span class="badge badge-success">4</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="icon-basket"></i> New order </a>
+                </li>
+                <li class="divider"> </li>
+                <li>
+                    <a href="#">
+                        <i class="icon-flag"></i> Pending Orders
+                        <span class="badge badge-danger">4</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="icon-users"></i> Pending Users
+                        <span class="badge badge-warning">12</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br><br><br>
+<div class="row">
+<div class="col-md-1"></div>
+<div class="col-md-10">
+<div ng-class="alert.type" ng-show="alert.enable">
+	       <span ng-bind="alert.message"></span>
+	       <span ng-click="alert.enable=false;" style="cursor: pointer;"><i class="fa fa-times pull-right"></i></span>
+</div>
+<form class="form-horizontal form-row-sepe">
+	
+	 <div class="form-group">
+			<label  for="inputEmail" class="control-label col-md-3">deal type :</label>
+				<div class="col-md-9">
+					 <select class="form-control input-xlarge select2me" data-placeholder="Select..." ng-model="deal.type">
+                                    <option value=""></option>
+                                    <option value="featureDeal">Featured Deals</option>
+                                    <option value="popularDeals">Popular Deals</option>
+									<option value="latestDeal">Last Minute Deals</option>
+                                </select>
+					
+					
+				</div>
+	</div>
+	
+	<div class="form-group">
+			<label  for="inputEmail" class="control-label col-md-3">do u want to publish now :</label>
+				<div class="col-md-9">
+					
+					 <select class="form-control input-xlarge select2me" data-placeholder="Select..." ng-model="deal.isPublish">
+                                    <option value=""></option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+									
+                     </select>
+				</div>
+    </div>
+	
+	<div class="form-group">
+			<label  for="inputEmail" class="control-label col-md-3">heading content :</label> 
+				<div class="col-md-9">
+					<textarea class="form-control" ng-model="deal.dealContent"></textarea>
+				</div>
+	</div>
+			
+	<div class="form-group">
+			<label  for="inputEmail" class="control-label col-md-3">deal short description :</label>
+				<div class="col-md-9">
+					<textarea class="form-control" ng-model="deal.dealShortEntry"></textarea>
+				</div>
+	</div>
+	
+	<div class="form-group">
+			<label  for="inputEmail" class="control-label col-md-3">deal total cost :</label> 
+				<div class="col-md-9">
+				<div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-usd"></i>
+
+                                </span>
+					<input type="text" class="form-control" ng-model="deal.dealValue"> 
+				</div></div>
+	</div>
+	
+	<div class="form-group">
+			<label  for="inputEmail" class="control-label col-md-3">deal discount :</label> 
+				<div class="col-md-9">
+				<div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-usd"></i>
+
+                                </span>
+					<input type="text" class="form-control" ng-model="deal.dealDiscount" ng-change="calculateDealOffer()"> 
+				</div></div>
+	</div>
+	
+	<div class="form-group">
+			<label  for="inputEmail" class="control-label col-md-3">customer price :</label> 
+				<div class="col-md-9">
+				<div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-usd"></i>
+
+                                </span>
+					<input type="text" class="form-control" ng-model="deal.dealPrice" ng-disabled="true"> 
+				</div></div>
+	</div>
+	
+	<div class="form-group">
+			<label  for="inputEmail" class="control-label col-md-3">customer savings :</label>
+				<div class="col-md-9">
+				<div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-usd"></i>
+
+                                </span>
+					<input type="text" class="form-control" ng-model="deal.dealSaving" ng-disabled="true"> 
+				</div></div>
+	</div>
+	
+	<div class="form-group">
+			<label  for="inputEmail" class="control-label col-md-3">deal end date :</label>
+				<div class="col-md-9">
+					<input type="text" class="form-control" ng-model="deal.dealEndsOn">
+				</div>
+	</div>
+	
+	<div class="form-group">
+			<label  for="inputEmail" class="control-label col-md-3">deal rating :</label>
+				<div class="col-md-9">
+					<input type="text" class="form-control" ng-model="deal.dealReating">
+				</div>
+	</div>
+	
+	<div class="form-group">
+			<label  for="inputEmail" class="control-label col-md-3">deal slider description :</label> 
+				<div class="col-md-9">
+					<input type="text" class="form-control" ng-model="deal.dealSubContent">
+				</div>
+	</div>
+	
+	<div class="form-group">
+			<label  for="inputEmail" class="control-label col-md-3">deal image :</label>
+				<div class="col-md-9">
+					<input type="text" class="form-control" ng-model="deal.dealImage">
+				</div>
+	</div>
+
+	<div class="pull-right">
+		<button class="btn purple" type="submit" ng-click="createNewDeal()" value="Create New Deal">Create New Deal</button>
+	</div>
+	
+	</form>
+	<br><br><br>
+	<pre>{{deal}}</pre></div>
+<div class="col-md-1"></div>
+
+</div>
+<script>
+    ComponentsSelect2.init(); // init todo page
+    ComponentsBootstrapSelect.init(); // init todo page
+</script>
+
+
+
+
+
+
+
